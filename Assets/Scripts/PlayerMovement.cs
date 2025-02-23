@@ -16,6 +16,14 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize(); // Diagonal hareket hızını sabitler
+        if (movement.magnitude > 0) // If moving
+        {
+            SoundManager.Instance.RunSound();
+        }
+        else // If stopped
+        {
+            SoundManager.Instance.StopRunSound();
+        }
     }
 
     void FixedUpdate()
